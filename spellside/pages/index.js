@@ -1,24 +1,22 @@
 import { useMoralis } from "react-moralis"
+import Navbar from "../components/Navbar"
+import Dashboard from "../components/Dashboard"
 export default function Home() {
-  const {isAuthenticated, authenticate} = useMoralis()
+  const {isAuthenticated, user,logout} = useMoralis()
   if(!isAuthenticated){
     return (
    
-      <div>
-       <h1 className="text-3xl font-bold underline">
-      Main Page
-    </h1>
-    <button className="btn btn-primary" onClick={() => authenticate({
-
-    })}
-    >Login MetaMask</button>
-      </div>
+      <div className="w-screen flex">
+      <Navbar auth={isAuthenticated}> </Navbar>
+       </div>
       )
   }
   return (
    
-    <div>
-     <h1>Logged in</h1>
+    <div className="w-screen">
+    <Navbar auth={isAuthenticated} logout={logout} user={user}> </Navbar>
+     <Dashboard user={user}></Dashboard>
+     
     </div>
     )
 }
