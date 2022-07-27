@@ -15,7 +15,7 @@ export default function Home() {
    
     <div className="w-screen">
     <Navbar auth={isAuthenticated} logout={logout} user={user}> </Navbar>
-     <Dashboard user={user}></Dashboard>
+     
      
     </div>
     )

@@ -14,6 +14,7 @@ export default function Navbar(props) {
         <div className="w-1/2 flex justify-center">
           <button className="text-xl ml-5" onClick={() => router.push('/mint')}>Mint</button>
           <button className="text-xl ml-5" onClick={() => router.push('/vote')}>Vote</button>
+          <button className="text-xl ml-5" onClick={() => router.push('/nfts')}>NFTs</button>
         </div>
         <div className=" ml-auto mr-5 flex items-center">
           <h1 className="text-md mr-2 font-mediumgit">

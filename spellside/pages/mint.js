@@ -17,6 +17,7 @@ export default function Mint() {
    
     <div className="w-screen">
     <Navbar auth={isAuthenticated} logout={logout} user={user}> </Navbar>
+   
      <MintNft />
      
     </div>
