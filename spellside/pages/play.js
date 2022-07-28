@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import Dashboard from "../components/Dashboard"
 import { useEffect } from "react"
 import { useRouter} from "next/router"
+import Game from "../components/Game"
 export default function Play() {
   const {isAuthenticated, user,logout} = useMoralis()
   const router = useRouter()
@@ -17,7 +18,7 @@ export default function Play() {
    
     <div className="w-screen">
     <Navbar auth={isAuthenticated} logout={logout} user={user}> </Navbar>
-     <h1>Play</h1>
+     <Game />
      
     </div>
     )
