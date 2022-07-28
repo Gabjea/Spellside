@@ -10,7 +10,7 @@ export default function Navbar(props) {
   if (auth) {
     return (
       <div className="flex w-screen mb-5 py-6">
-        <button className="text-3xl ml-5 justify-center" onClick={() => router.push('/play')}>Spellside</button>
+        <button className="text-3xl ml-5 justify-center" onClick={() => router.push('/mint')}>Spellside</button>
         <div className="w-1/2 flex justify-center">
           <button className="text-xl ml-5" onClick={() => router.push('/mint')}>Mint</button>
           <button className="text-xl ml-5" onClick={() => router.push('/vote')}>Vote</button>

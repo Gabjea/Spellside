@@ -1,9 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
+import {useRouter} from 'next/router'
 
 export default function NftCard(props) {
   console.log(props.nft);
+
+    const [selectedNft,SetSelectedNft] = useState(null)
+
+  const router = useRouter()
   return (
-    <div className="w-2/3 rounded overflow-hidden shadow-lg">
+    <div id={props.nft.tokenId} className="w-2/3 rounded overflow-hidden shadow-lg">
       <img className="w-screen" src={props.nft.image} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{props.nft.name}</div>
@@ -19,6 +24,8 @@ export default function NftCard(props) {
           })}
         </div>
       </div>
+     <button type="button" onClick={() => {router.push({pathname: '/play', query: {name:props.nft.tokenId}})}} class="text-white w-full bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Choose</button>
+     
     </div>
   );
 }

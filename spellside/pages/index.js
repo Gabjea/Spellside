@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isAuthenticated)
-      router.push('/play')
+      router.push('/mint')
 
   },[isAuthenticated])
 
