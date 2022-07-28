@@ -1,8 +1,18 @@
 import { useMoralis } from "react-moralis"
 import Navbar from "../components/Navbar"
 import Dashboard from "../components/Dashboard"
+import {useEffect} from "react"
+import {router} from "next/router"
 export default function Home() {
   const {isAuthenticated, user,logout} = useMoralis()
+
+  useEffect(() => {
+    if (isAuthenticated)
+      router.push('/play')
+
+  },[isAuthenticated])
+
+
   if(!isAuthenticated){
     return (
    
@@ -11,12 +21,5 @@ export default function Home() {
        </div>
       )
   }
-  return (
-   
-    <div className="w-screen">
-    <Navbar auth={isAuthenticated} logout={logout} user={user}> </Navbar>
-     <Dashboard user={user}></Dashboard>
-     
-    </div>
-    )
+  
 }
