@@ -6,9 +6,7 @@ import {useRouter} from "next/router"
 import { useNFTBalances } from "react-moralis";
 import Moralis from "moralis"
 import NftCard from "../components/NftCard"
-import BattleCard from "../components/BattleCard"
-import { useParams } from "react-router-dom";
-export default  function Game() {
+export default  function Select() {
   const {isAuthenticated, user,logout} = useMoralis()
   const router = useRouter()
   useEffect(() => {
@@ -32,14 +30,9 @@ const [nfts,setNfts] = useState([])
             chain: "rinkeby",
             address: user.get("ethAddress"),
           };
-          const _nft =  await Moralis.Web3API.account.getNFTs(options)
-          const { name } = props.match.params;
-          const params = new URLSearchParams(window.location.pathname);
-          console.log(params);
-          _nft.result.find(element => element === params);
-          
-           setNfts(_nft)
-          console.log(_nft);
+          const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
+           setNfts(polygonNFTs.result)
+          console.log(nfts);
     }
   
     
@@ -55,8 +48,13 @@ const [nfts,setNfts] = useState([])
    
     <div className="w-screen py-10">
    
-    <div className="w-screen h-screen">
-        <BattleCard ></BattleCard>
+    <div className="px-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+        {nfts && nfts.map((nft,index) =>{ 
+          const obj = JSON.parse(nft.metadata)
+         
+           return (obj?.image && <NftCard  nft={obj} /> || <div></div>)
+           
+        })}
     </div>
     </div>
     )
